@@ -1,0 +1,88 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    package com.infusion.util.event;<a name="line.1"></a>
+<FONT color="green">002</FONT>    <a name="line.2"></a>
+<FONT color="green">003</FONT>    /**<a name="line.3"></a>
+<FONT color="green">004</FONT>     * A class that will handle an event of a particular type.  The Type parameter E is the type<a name="line.4"></a>
+<FONT color="green">005</FONT>     * of event this record will service.<a name="line.5"></a>
+<FONT color="green">006</FONT>     *<a name="line.6"></a>
+<FONT color="green">007</FONT>     * @author eric<a name="line.7"></a>
+<FONT color="green">008</FONT>     */<a name="line.8"></a>
+<FONT color="green">009</FONT>    public interface EventConsumer&lt;E&gt; {<a name="line.9"></a>
+<FONT color="green">010</FONT>    // ========================================================================================================================<a name="line.10"></a>
+<FONT color="green">011</FONT>    //    Public Instance Methods<a name="line.11"></a>
+<FONT color="green">012</FONT>    // ========================================================================================================================<a name="line.12"></a>
+<FONT color="green">013</FONT>    <a name="line.13"></a>
+<FONT color="green">014</FONT>        /**<a name="line.14"></a>
+<FONT color="green">015</FONT>         * This method will perform the work needed on the event, if any.  Because we can have a heirarchy of<a name="line.15"></a>
+<FONT color="green">016</FONT>         * events, it also passes in the event class that is calling this method.<a name="line.16"></a>
+<FONT color="green">017</FONT>         *<a name="line.17"></a>
+<FONT color="green">018</FONT>         * @param event The event that was fired<a name="line.18"></a>
+<FONT color="green">019</FONT>         * @param eventBroker The class that defined this handler<a name="line.19"></a>
+<FONT color="green">020</FONT>         */<a name="line.20"></a>
+<FONT color="green">021</FONT>        public void consume(E event, EventBroker eventBroker);<a name="line.21"></a>
+<FONT color="green">022</FONT>    }<a name="line.22"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

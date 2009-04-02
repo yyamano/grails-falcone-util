@@ -1,0 +1,105 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    package com.infusion.util.event.groovy;<a name="line.1"></a>
+<FONT color="green">002</FONT>    <a name="line.2"></a>
+<FONT color="green">003</FONT>    import static java.text.MessageFormat.format;<a name="line.3"></a>
+<FONT color="green">004</FONT>    <a name="line.4"></a>
+<FONT color="green">005</FONT>    import groovy.lang.Closure;<a name="line.5"></a>
+<FONT color="green">006</FONT>    import com.infusion.util.event.*;<a name="line.6"></a>
+<FONT color="green">007</FONT>    <a name="line.7"></a>
+<FONT color="green">008</FONT>    /**<a name="line.8"></a>
+<FONT color="green">009</FONT>     * An extension of the base event broker class that adds convenience methods for passing closures as parameters.<a name="line.9"></a>
+<FONT color="green">010</FONT>     * &lt;p/&gt;<a name="line.10"></a>
+<FONT color="green">011</FONT>     * You can "subscribe" to events, or "publish" events.<a name="line.11"></a>
+<FONT color="green">012</FONT>     *<a name="line.12"></a>
+<FONT color="green">013</FONT>     * @author eric<a name="line.13"></a>
+<FONT color="green">014</FONT>     */<a name="line.14"></a>
+<FONT color="green">015</FONT>    public class GroovyEventBroker extends EventBrokerImpl {<a name="line.15"></a>
+<FONT color="green">016</FONT>    // ========================================================================================================================<a name="line.16"></a>
+<FONT color="green">017</FONT>    //    Public Instance Methods<a name="line.17"></a>
+<FONT color="green">018</FONT>    // ========================================================================================================================<a name="line.18"></a>
+<FONT color="green">019</FONT>    <a name="line.19"></a>
+<FONT color="green">020</FONT>        public void publish(String name, final Closure closure) {<a name="line.20"></a>
+<FONT color="green">021</FONT>            super.publish(name, new EventDelegate() {<a name="line.21"></a>
+<FONT color="green">022</FONT>                public Object getEvent(EventBroker eventBroker) {<a name="line.22"></a>
+<FONT color="green">023</FONT>                    return closure.call(eventBroker);<a name="line.23"></a>
+<FONT color="green">024</FONT>                }<a name="line.24"></a>
+<FONT color="green">025</FONT>            });<a name="line.25"></a>
+<FONT color="green">026</FONT>        }<a name="line.26"></a>
+<FONT color="green">027</FONT>    <a name="line.27"></a>
+<FONT color="green">028</FONT>        public void subscribe(String eventType, final Closure closure) {<a name="line.28"></a>
+<FONT color="green">029</FONT>            subscribe(eventType, "Anonymous", closure);<a name="line.29"></a>
+<FONT color="green">030</FONT>        }<a name="line.30"></a>
+<FONT color="green">031</FONT>    <a name="line.31"></a>
+<FONT color="green">032</FONT>        /**<a name="line.32"></a>
+<FONT color="green">033</FONT>         * Registers a new consumer, passing a closure as the event handler<a name="line.33"></a>
+<FONT color="green">034</FONT>         */<a name="line.34"></a>
+<FONT color="green">035</FONT>        public void subscribe(String eventType, final String name, final Closure closure) {<a name="line.35"></a>
+<FONT color="green">036</FONT>            log.debug(format("Registered a closured consumer for {0}: {1}", eventType, name));<a name="line.36"></a>
+<FONT color="green">037</FONT>            subscribe(eventType, EventUtils.closured(name, closure));<a name="line.37"></a>
+<FONT color="green">038</FONT>        }<a name="line.38"></a>
+<FONT color="green">039</FONT>    }<a name="line.39"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

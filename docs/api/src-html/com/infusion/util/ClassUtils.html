@@ -1,0 +1,113 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    package com.infusion.util;<a name="line.1"></a>
+<FONT color="green">002</FONT>    <a name="line.2"></a>
+<FONT color="green">003</FONT>    import java.lang.reflect.InvocationTargetException;<a name="line.3"></a>
+<FONT color="green">004</FONT>    import java.lang.reflect.Method;<a name="line.4"></a>
+<FONT color="green">005</FONT>    <a name="line.5"></a>
+<FONT color="green">006</FONT>    /**<a name="line.6"></a>
+<FONT color="green">007</FONT>     * Infusion Software&lt;BR&gt;<a name="line.7"></a>
+<FONT color="green">008</FONT>     * Date: Jul 10, 2006&lt;BR&gt;<a name="line.8"></a>
+<FONT color="green">009</FONT>     * Time: 3:16:24 PM&lt;BR&gt;<a name="line.9"></a>
+<FONT color="green">010</FONT>     *<a name="line.10"></a>
+<FONT color="green">011</FONT>     * @author eric<a name="line.11"></a>
+<FONT color="green">012</FONT>     */<a name="line.12"></a>
+<FONT color="green">013</FONT>    public class ClassUtils {<a name="line.13"></a>
+<FONT color="green">014</FONT>    // ========================================================================================================================<a name="line.14"></a>
+<FONT color="green">015</FONT>    //    Static Methods<a name="line.15"></a>
+<FONT color="green">016</FONT>    // ========================================================================================================================<a name="line.16"></a>
+<FONT color="green">017</FONT>    <a name="line.17"></a>
+<FONT color="green">018</FONT>        /**<a name="line.18"></a>
+<FONT color="green">019</FONT>         * Invokes a deep getter command, given the pattern to dive after and the original object.  If the following parameters are passed:<a name="line.19"></a>
+<FONT color="green">020</FONT>         * &lt;p/&gt;<a name="line.20"></a>
+<FONT color="green">021</FONT>         * deep = "class.name.class.name"&lt;BR&gt;<a name="line.21"></a>
+<FONT color="green">022</FONT>         * o = new Object()<a name="line.22"></a>
+<FONT color="green">023</FONT>         * &lt;p/&gt;<a name="line.23"></a>
+<FONT color="green">024</FONT>         * The result will be: java.lang.String="java.lang.String".  The method would have done the following operations:<a name="line.24"></a>
+<FONT color="green">025</FONT>         * new Object().getClass = java.lang.Object.CLASS&lt;BR&gt;<a name="line.25"></a>
+<FONT color="green">026</FONT>         * java.lang.Object.CLASS.getName() = "java.lang.Object"&lt;BR&gt;<a name="line.26"></a>
+<FONT color="green">027</FONT>         * "java.lang.Object".getClass() = java.lang.String.CLASS&lt;BR&gt;<a name="line.27"></a>
+<FONT color="green">028</FONT>         * java.lang.String.CLASS.getName() = "java.lang.String"&lt;BR&gt;<a name="line.28"></a>
+<FONT color="green">029</FONT>         *<a name="line.29"></a>
+<FONT color="green">030</FONT>         * @param deep The deep string (dot separated) to dive after<a name="line.30"></a>
+<FONT color="green">031</FONT>         * @param o    The original object<a name="line.31"></a>
+<FONT color="green">032</FONT>         */<a name="line.32"></a>
+<FONT color="green">033</FONT>    <a name="line.33"></a>
+<FONT color="green">034</FONT>        public static Object deepGetter(String deep, Object o) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {<a name="line.34"></a>
+<FONT color="green">035</FONT>            String[] parts = deep.split("\\.");<a name="line.35"></a>
+<FONT color="green">036</FONT>            String first = parts[0];<a name="line.36"></a>
+<FONT color="green">037</FONT>            Method get = o.getClass().getMethod("get" + StringUtils.firstLetterUpper(first));<a name="line.37"></a>
+<FONT color="green">038</FONT>            Object got = get.invoke(o);<a name="line.38"></a>
+<FONT color="green">039</FONT>    <a name="line.39"></a>
+<FONT color="green">040</FONT>            if (deep.contains(".")) {<a name="line.40"></a>
+<FONT color="green">041</FONT>                String remain = CollectionUtil.Join(parts, 1, ".");<a name="line.41"></a>
+<FONT color="green">042</FONT>                return deepGetter(remain, got);<a name="line.42"></a>
+<FONT color="green">043</FONT>            } else {<a name="line.43"></a>
+<FONT color="green">044</FONT>                return got;<a name="line.44"></a>
+<FONT color="green">045</FONT>            }<a name="line.45"></a>
+<FONT color="green">046</FONT>        }<a name="line.46"></a>
+<FONT color="green">047</FONT>    }<a name="line.47"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>
