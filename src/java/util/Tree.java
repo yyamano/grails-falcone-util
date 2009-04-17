@@ -61,11 +61,14 @@ public class Tree<T> {
      * Adds a leaf item to the tree, at the given location.  The location should not include separators
      */
     public void addItem(T data, String... location) {
+
+        
         //The map the item will ultimately belong in
         final IndexedTreeMap<TreeKey, String> parentMap = getMap(chop(location));
 
         //The last item in "location" is the key
         final String itemKey = location[location.length - 1];
+
 
         //Only add to the map if it doesn't already exist
         if (!parentMap.containsKeyByIndex(itemKey)) {
@@ -169,7 +172,7 @@ public class Tree<T> {
      * @param locations
      * @return
      */
-    private IndexedTreeMap<TreeKey, String> getMap(String... locations) {
+    public IndexedTreeMap<TreeKey, String> getMap(String... locations) {
         IndexedTreeMap<TreeKey, String> currentList = map;
         for (String location : locations) {
             if (!currentList.containsKeyByIndex(location)) {

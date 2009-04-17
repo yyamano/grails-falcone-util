@@ -1,4 +1,4 @@
-<plugin name='falcone-util' version='0.1' grailsVersion='1.1 &gt; *'>
+<plugin name='falcone-util' version='0.2' grailsVersion='1.1 &gt; *'>
   <author>Eric Martineau</author>
   <title>Falcone Util Project</title>
   <description>\
@@ -7,11 +7,6 @@ The base classes used to support multi-tenancy and the falcone framework
   <documentation>http://grails.org/FalconeUtil+Plugin</documentation>
   <resources>
     <resource>UtilDomainController</resource>
-    <resource>spring.resources</resource>
-    <resource>BootStrap</resource>
-    <resource>DataSource</resource>
-    <resource>Config</resource>
-    <resource>UrlMappings</resource>
     <resource>UtilDomain</resource>
   </resources>
   <dependencies />
