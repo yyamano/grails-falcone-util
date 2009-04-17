@@ -26,7 +26,7 @@ import org.springframework.util.ClassUtils
 import grails.util.GrailsUtil
 
 class FalconeUtilGrailsPlugin {
-  def version = 0.2
+  def version = 0.3
   def dependsOn = [:]
   // TODO Fill in these fields
   def author = "Eric Martineau"
@@ -69,6 +69,7 @@ The base classes used to support multi-tenancy and the falcone framework
         Closure doWithEventsClosure = plugin.getInstance().doWithEvents;
         EventConsumerListBuilder builder = new EventConsumerListBuilder();
         doWithEventsClosure.delegate = builder;
+        doWithEventsClosure.resolveStrategy = Closure.DELEGATE_ONLY;
         doWithEventsClosure.call(ctx);
         builder.getEventConsumers().each {
           entry -> eventBroker.subscribe(entry.value, entry.key)
