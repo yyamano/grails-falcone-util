@@ -344,8 +344,6 @@ function windowTitle()
      </dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/EventUtils.html#chain(String, String, EventBroker)" title="Method in EventUtils"><b>chain</b>(String, String, EventBroker)</b></a> - Method in <a href="src/java/com/infusion/util/event/groovy/EventUtils.html">EventUtils</a>
 </dt><dd></dd>
-<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html#CHAIN_METHOD" title="Field in EventConsumerBuilder"><b>CHAIN_METHOD</b></a> - Field in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html">EventConsumerBuilder</a>
-</dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/EventUtils.html#chainAndFilter(String, String, EventBroker, Closure)" title="Method in EventUtils"><b>chainAndFilter</b>(String, String, EventBroker, Closure)</b></a> - Method in <a href="src/java/com/infusion/util/event/groovy/EventUtils.html">EventUtils</a>
 </dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/EventUtils.html#chainAndRegister(String, String, EventBroker)" title="Method in EventUtils"><b>chainAndRegister</b>(String, String, EventBroker)</b></a> - Method in <a href="src/java/com/infusion/util/event/groovy/EventUtils.html">EventUtils</a>
@@ -829,17 +827,10 @@ function windowTitle()
  </dd>
 <dt><a href="src/java/com/infusion/util/event/EventConsumer.html" title="Interface in src.java.com.infusion.util.event"><b>EventConsumer</b></a> - Interface in <a href="./src/java/com/infusion/util/event/package-summary.html">src.java.com.infusion.util.event</a>
 </dt><dd> A class that will handle an event of a particular type.  </dd>
-<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html" title="Class in src.java.com.infusion.util.event.groovy.builder"><b>EventConsumerBuilder</b></a> - Class in <a href="./src/java/com/infusion/util/event/groovy/builder/package-summary.html">src.java.com.infusion.util.event.groovy.builder</a>
-</dt><dd> Builder that builds out eventConsumer instances for a given eventName.
- </dd>
-<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html#EventConsumerBuilder(String, src.java.com.infusion.util.event.groovy.builder.EventConsumerListBuilder)" title="Constructor in EventConsumerBuilder"><b>EventConsumerBuilder</b>(String, EventConsumerListBuilder)</b></a> - Constructor in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html">EventConsumerBuilder</a>
-</dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html" title="Class in src.java.com.infusion.util.event.groovy.builder"><b>EventConsumerListBuilder</b></a> - Class in <a href="./src/java/com/infusion/util/event/groovy/builder/package-summary.html">src.java.com.infusion.util.event.groovy.builder</a>
-</dt><dd> Created by IntelliJ IDEA.
+</dt><dd> Builder class for defining event listeners
  </dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/builder/EventBuilder.html#eventConsumerListBuilder" title="Field in EventBuilder"><b>eventConsumerListBuilder</b></a> - Field in <a href="src/java/com/infusion/util/event/groovy/builder/EventBuilder.html">EventBuilder</a>
-</dt><dd></dd>
-<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html#eventConsumerListBuilder" title="Field in EventConsumerBuilder"><b>eventConsumerListBuilder</b></a> - Field in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html">EventConsumerBuilder</a>
 </dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html#EventConsumerListBuilder()" title="Constructor in EventConsumerListBuilder"><b>EventConsumerListBuilder</b>()</b></a> - Constructor in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html">EventConsumerListBuilder</a>
 </dt><dd></dd>
@@ -857,8 +848,6 @@ function windowTitle()
 <dt><a href="src/java/com/infusion/util/event/filter/EventFilter.html" title="Interface in src.java.com.infusion.util.event.filter"><b>EventFilter</b></a> - Interface in <a href="./src/java/com/infusion/util/event/filter/package-summary.html">src.java.com.infusion.util.event.filter</a>
 </dt><dd> Class used to filter a certain type of event.
  </dd>
-<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html#eventName" title="Field in EventConsumerBuilder"><b>eventName</b></a> - Field in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html">EventConsumerBuilder</a>
-</dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/event/EventType.html#eventName" title="Field in EventType"><b>eventName</b></a> - Field in <a href="src/java/com/infusion/util/event/EventType.html">EventType</a>
 </dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSession.html#eventSource" title="Field in InterceptableSession"><b>eventSource</b></a> - Field in <a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSession.html">InterceptableSession</a>
@@ -1310,6 +1299,8 @@ function windowTitle()
 </dt><dd> Given two numbers, it will give you the percentage difference between the two.  </dd>
 <dt><a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSession.html#getPersistenceContext()" title="Method in InterceptableSession"><b>getPersistenceContext</b>()</b></a> - Method in <a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSession.html">InterceptableSession</a>
 </dt><dd></dd>
+<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html#getProperty(String)" title="Method in EventConsumerListBuilder"><b>getProperty</b>(String)</b></a> - Method in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html">EventConsumerListBuilder</a>
+</dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSessionFactory.html#getQueryCache(String)" title="Method in InterceptableSessionFactory"><b>getQueryCache</b>(String)</b></a> - Method in <a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSessionFactory.html">InterceptableSessionFactory</a>
 </dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSessionFactory.html#getQueryPlanCache()" title="Method in InterceptableSessionFactory"><b>getQueryPlanCache</b>()</b></a> - Method in <a href="src/java/com/infusion/util/domain/event/hibernate/InterceptableSessionFactory.html">InterceptableSessionFactory</a>
@@ -1590,8 +1581,6 @@ function windowTitle()
 </dt><dd> Redirects method chaining to the eventConsumerBuilder instance.
      </dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/builder/EventBuilder.html#invokeMethod(String, Object)" title="Method in EventBuilder"><b>invokeMethod</b>(String, Object)</b></a> - Method in <a href="src/java/com/infusion/util/event/groovy/builder/EventBuilder.html">EventBuilder</a>
-</dt><dd></dd>
-<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html#invokeMethod(String, Object)" title="Method in EventConsumerBuilder"><b>invokeMethod</b>(String, Object)</b></a> - Method in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerBuilder.html">EventConsumerBuilder</a>
 </dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html#invokeMethod(String, Object)" title="Method in EventConsumerListBuilder"><b>invokeMethod</b>(String, Object)</b></a> - Method in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html">EventConsumerListBuilder</a>
 </dt><dd></dd>
@@ -2182,6 +2171,8 @@ function windowTitle()
  
      </dd>
 <dt><a href="src/java/com/infusion/util/DateUtils.html#parseYearMonth(String)" title="Method in DateUtils"><b>parseYearMonth</b>(String)</b></a> - Method in <a href="src/java/com/infusion/util/DateUtils.html">DateUtils</a>
+</dt><dd></dd>
+<dt><a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html#parts" title="Field in EventConsumerListBuilder"><b>parts</b></a> - Field in <a href="src/java/com/infusion/util/event/groovy/builder/EventConsumerListBuilder.html">EventConsumerListBuilder</a>
 </dt><dd></dd>
 <dt><a href="src/java/com/infusion/util/StringUtils.html#pathToClassName(String, String)" title="Method in StringUtils"><b>pathToClassName</b>(String, String)</b></a> - Method in <a href="src/java/com/infusion/util/StringUtils.html">StringUtils</a>
 </dt><dd></dd>
