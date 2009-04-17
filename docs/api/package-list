@@ -1,10 +1,13 @@
 com.infusion.util
 com.infusion.util.data.filter
 com.infusion.util.domain.event
+com.infusion.util.domain.event.hibernate
 com.infusion.util.event
 com.infusion.util.event.chain
 com.infusion.util.event.filter
 com.infusion.util.event.groovy
 com.infusion.util.event.groovy.builder
+com.infusion.util.event.spring
 com.infusion.util.factory
+com.infusion.util.grails
 util

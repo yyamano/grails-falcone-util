@@ -28,4 +28,8 @@ public class EventConsumerListBuilder extends GroovyObjectSupport {
         c.call();
         return eventConsumerBuilder;
     }
+
+    public Map<EventConsumer, String> getEventConsumers() {
+        return eventConsumers;
+    }
 }
