@@ -10,4 +10,5 @@ com.infusion.util.event.groovy.builder
 com.infusion.util.event.spring
 com.infusion.util.factory
 com.infusion.util.grails
+org.hibernate.impl
 util

@@ -26,7 +26,7 @@ import org.springframework.util.ClassUtils
 import grails.util.GrailsUtil
 
 class FalconeUtilGrailsPlugin {
-  def version = 0.3
+  def version = 0.4
   def dependsOn = [:]
   // TODO Fill in these fields
   def author = "Eric Martineau"

@@ -3,20 +3,27 @@ package com.infusion.util.event.spring;
 import org.springframework.beans.factory.config.*;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValue;
+import org.springframework.beans.MutablePropertyValues;
+import org.springframework.orm.hibernate3.SpringSessionContext;
 import com.infusion.util.domain.event.hibernate.InterceptableConfigurableSessionFactoryBean;
 
 /**
- * Created by IntelliJ IDEA.
- * User: eric
- * Date: Apr 1, 2009
- * Time: 10:52:27 PM
+ * This class overrides the sessionFactory bean definition to use an Interceptable one instead.  It also wires the event
+ * broker bean and the currentSessionContextClass implementation.
+ * 
  */
 public class InterceptableSessionFactoryPostProcessor implements BeanFactoryPostProcessor {
+// ========================================================================================================================
+//    Public Instance Methods
+// ========================================================================================================================
+
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         //Handle SessionFactory
         final BeanDefinition sessionFactoryBeanDefinition = beanFactory.getBeanDefinition("sessionFactory");
         sessionFactoryBeanDefinition.setBeanClassName(InterceptableConfigurableSessionFactoryBean.class.getName());
-        sessionFactoryBeanDefinition.getPropertyValues().addPropertyValue(new PropertyValue("eventBroker", new RuntimeBeanReference("eventBroker")));
-    }
+        final MutablePropertyValues propertyValues = sessionFactoryBeanDefinition.getPropertyValues();
 
+        propertyValues.addPropertyValue(new PropertyValue("eventBroker", new RuntimeBeanReference("eventBroker")));
+        propertyValues.addPropertyValue(new PropertyValue("currentSessionContextClass", InterceptableCurrentSessionContext.class));
+    }
 }

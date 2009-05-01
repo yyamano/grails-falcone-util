@@ -316,4 +316,12 @@ public class InterceptableSessionFactory implements SessionFactory , SessionFact
         this.wrapped = wrapped;
         this.implementor = (SessionFactoryImplementor) wrapped;
     }
+
+    public SessionFactoryImplementor getImplementor() {
+        return implementor;
+    }
+
+    public void setEventBroker(EventBroker eventBroker) {
+        this.eventBroker = eventBroker;
+    }
 }
