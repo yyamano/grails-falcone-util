@@ -26,11 +26,11 @@ import org.springframework.util.ClassUtils
 import grails.util.GrailsUtil
 
 class FalconeUtilGrailsPlugin {
-  def version = 0.4
+  def version = 0.5
   def dependsOn = [:]
   // TODO Fill in these fields
   def author = "Eric Martineau"
-  def authorEmail = ""
+  def authorEmail = "ericm@infusionsoft.com"
   def title = "Falcone Util Project"
   def description = '''\\
 The base classes used to support multi-tenancy and the falcone framework

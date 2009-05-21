@@ -1,4 +1,0 @@
-class UtilDomain {
-	String name
-
-}
