@@ -44,7 +44,6 @@ public class InterceptableSessionFactory implements SessionFactory , SessionFact
 
     private SessionFactory wrapped;
     private SessionFactoryImplementor implementor;
-    private EventBroker eventBroker;
 
 // ========================================================================================================================
 //    Constructors
@@ -55,7 +54,6 @@ public class InterceptableSessionFactory implements SessionFactory , SessionFact
 
     public InterceptableSessionFactory(SessionFactory wrapped, EventBroker eventBroker) {
         this.setWrapped(wrapped);
-        this.eventBroker = eventBroker;
     }
 
 // ========================================================================================================================
@@ -161,22 +159,22 @@ public class InterceptableSessionFactory implements SessionFactory , SessionFact
     }
 
     public Session openSession() throws HibernateException {
-        return new InterceptableSession(wrapped.openSession(), eventBroker);
+        return new InterceptableSession(wrapped.openSession());
     }
 
     public Session openSession(Connection connection) {
         final Session session = wrapped.openSession(connection);
-        return new InterceptableSession(session, eventBroker);
+        return new InterceptableSession(session);
     }
 
     public Session openSession(Interceptor interceptor) throws HibernateException {
         final Session session = wrapped.openSession(interceptor);
-        return new InterceptableSession(session, eventBroker);
+        return new InterceptableSession(session);
     }
 
     public Session openSession(Connection connection, Interceptor interceptor) {
         final Session session = wrapped.openSession(connection, interceptor);
-        return new InterceptableSession(session, eventBroker);
+        return new InterceptableSession(session);
     }
 
     public StatelessSession openStatelessSession() {
@@ -321,7 +319,4 @@ public class InterceptableSessionFactory implements SessionFactory , SessionFact
         return implementor;
     }
 
-    public void setEventBroker(EventBroker eventBroker) {
-        this.eventBroker = eventBroker;
-    }
 }
