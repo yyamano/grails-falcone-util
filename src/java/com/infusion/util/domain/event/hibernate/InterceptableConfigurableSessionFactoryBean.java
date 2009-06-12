@@ -28,7 +28,6 @@ public class InterceptableConfigurableSessionFactoryBean extends ConfigurableLoc
         InterceptableCurrentSessionContext.sessionFactoryTL.set(rtn);
 
         try {
-            rtn.setEventBroker(eventBroker);
             rtn.setWrapped(super.newSessionFactory(configuration));
         } finally {
             InterceptableCurrentSessionContext.sessionFactoryTL.set(null);

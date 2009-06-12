@@ -24,9 +24,10 @@ import org.hibernate.criterion.Expression
 import grails.spring.BeanBuilder
 import org.springframework.util.ClassUtils
 import grails.util.GrailsUtil
+import com.infusion.util.event.EventBrokerHolder
 
 class FalconeUtilGrailsPlugin {
-  def version = 0.5
+  def version = 0.6
   def dependsOn = [:]
   // TODO Fill in these fields
   def author = "Eric Martineau"
@@ -42,6 +43,10 @@ The base classes used to support multi-tenancy and the falcone framework
   def doWithSpring = {
     //Register the event broker for the system
     eventBroker(GroovyEventBroker)
+
+    eventBrokerHolder(EventBrokerHolder) {
+      eventBroker = eventBroker
+    }
 
     //Register all hibernate events to be published to the event broker
     hibernateEventAdapter(HibernateEventAdapter) {

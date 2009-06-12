@@ -22,10 +22,11 @@ import java.io.Serializable;
 import java.util.*;
 
 import com.infusion.util.event.EventBroker;
+import com.infusion.util.event.EventBrokerHolder;
 
 /**
- * Wrapped "Session" object - the only thing it does is return {@link InterceptableQuery} and
- * {@link InterceptableCriteria} instances instead of the defaults.
+ * Wrapped "Session" object - the only thing it does is return {@link Query} and
+ * {@link Criteria} instances instead of the defaults.
  */
 public class InterceptableSession implements EventSource, Session {
 // ========================================================================================================================
@@ -35,7 +36,6 @@ public class InterceptableSession implements EventSource, Session {
     private final EventSource eventSource;
     private final Session session;
     private final SessionImplementor sessionImplementor;
-    private final EventBroker eventBroker;
 
 // ======================================================================================================================== 
 //    Constructors
@@ -43,14 +43,14 @@ public class InterceptableSession implements EventSource, Session {
 
     /**
      * The Session provided must also implement SessionImplementor and EventSource interface.
+     *
      * @param session
      */
-    public InterceptableSession(Session session, EventBroker eventBroker) {
+    public InterceptableSession(Session session) {
         this.session = session;
         this.sessionImplementor = (SessionImplementor) session;
         this.eventSource = (EventSource) session;
-        this.eventBroker = eventBroker;
-        eventBroker.publish("hibernate.sessionCreated", this);
+        EventBrokerHolder.getEventBroker().publish("hibernate.sessionCreated", this);
     }
 
 // ========================================================================================================================
@@ -102,27 +102,39 @@ public class InterceptableSession implements EventSource, Session {
     }
 
     public Criteria createCriteria(Class aClass) {
-        return new InterceptableCriteria(session.createCriteria(aClass), eventBroker);
+        final Criteria criteria = session.createCriteria(aClass);
+        EventBrokerHolder.getEventBroker().publish("hibernate.criteriaCreated", new CriteriaContext(criteria, aClass));
+        return criteria;
     }
 
     public Criteria createCriteria(String s) {
-        return new InterceptableCriteria(session.createCriteria(s), eventBroker);
+        final Criteria criteria = session.createCriteria(s);
+        EventBrokerHolder.getEventBroker().publish("hibernate.criteriaCreated", new CriteriaContext(criteria, null));
+        return criteria;
     }
 
     public Criteria createCriteria(Class aClass, String s) {
-        return new InterceptableCriteria(session.createCriteria(aClass, s), eventBroker);
+        final Criteria criteria = session.createCriteria(aClass, s);
+        EventBrokerHolder.getEventBroker().publish("hibernate.criteriaCreated", new CriteriaContext(criteria, aClass));
+        return criteria;
     }
 
     public Criteria createCriteria(String s, String s1) {
-        return new InterceptableCriteria(session.createCriteria(s, s1), eventBroker);
+        final Criteria criteria = session.createCriteria(s, s1);
+        EventBrokerHolder.getEventBroker().publish("hibernate.criteriaCreated", new CriteriaContext(criteria, null));
+        return criteria;
     }
 
     public Query createFilter(Object o, String s) throws HibernateException {
-        return new InterceptableQuery(session.createFilter(o, s), eventBroker);
+        final Query query = session.createFilter(o, s);
+        EventBrokerHolder.getEventBroker().publish("hibernate.queryCreated", query);
+        return query;
     }
 
     public Query createQuery(String s) throws HibernateException {
-        return new InterceptableQuery(session.createQuery(s), eventBroker);
+        final Query query = session.createQuery(s);
+        EventBrokerHolder.getEventBroker().publish("hibernate.queryCreated", query);
+        return query;
     }
 
     public SQLQuery createSQLQuery(String s) throws HibernateException {
@@ -233,11 +245,11 @@ public class InterceptableSession implements EventSource, Session {
         return session.get(s, serializable, lockMode);
     }
 
-     /*
-     * ###############################################################################
-     * Event Source
-     * ###############################################################################
-     */
+    /*
+    * ###############################################################################
+    * Event Source
+    * ###############################################################################
+    */
 
     public ActionQueue getActionQueue() {
         return eventSource.getActionQueue();
@@ -330,7 +342,9 @@ public class InterceptableSession implements EventSource, Session {
     }
 
     public Query getNamedQuery(String s) throws HibernateException {
-        return new InterceptableQuery(session.getNamedQuery(s), eventBroker);
+        final Query query = session.getNamedQuery(s);
+        EventBrokerHolder.getEventBroker().publish("hibernate.queryCreated", query);
+        return query;
     }
 
     public Query getNamedSQLQuery(String s) {

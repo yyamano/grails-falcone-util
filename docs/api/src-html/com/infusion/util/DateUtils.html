@@ -1656,71 +1656,73 @@
 <FONT color="green">1653</FONT>            today.set(Calendar.HOUR, 0);<a name="line.1653"></a>
 <FONT color="green">1654</FONT>            today.set(Calendar.MINUTE, 0);<a name="line.1654"></a>
 <FONT color="green">1655</FONT>            today.set(Calendar.SECOND, 0);<a name="line.1655"></a>
-<FONT color="green">1656</FONT>            return today;<a name="line.1656"></a>
-<FONT color="green">1657</FONT>        }<a name="line.1657"></a>
-<FONT color="green">1658</FONT>    <a name="line.1658"></a>
-<FONT color="green">1659</FONT>        /**<a name="line.1659"></a>
-<FONT color="green">1660</FONT>         * Returns a calendar that has been rounded to the next quarter hour and zeros out the seconds and milliseconds.<a name="line.1660"></a>
-<FONT color="green">1661</FONT>         *<a name="line.1661"></a>
-<FONT color="green">1662</FONT>         * @param cal calendar to preform calculations on<a name="line.1662"></a>
-<FONT color="green">1663</FONT>         * @return cal calendar to return<a name="line.1663"></a>
-<FONT color="green">1664</FONT>         */<a name="line.1664"></a>
-<FONT color="green">1665</FONT>        public static GregorianCalendar roundCalToNextQuarterHour(GregorianCalendar cal) {<a name="line.1665"></a>
-<FONT color="green">1666</FONT>            int minutes = cal.get(Calendar.MINUTE);<a name="line.1666"></a>
-<FONT color="green">1667</FONT>    <a name="line.1667"></a>
-<FONT color="green">1668</FONT>            if (minutes &gt; 45) {<a name="line.1668"></a>
-<FONT color="green">1669</FONT>                cal.set(Calendar.MINUTE, 0);<a name="line.1669"></a>
-<FONT color="green">1670</FONT>                cal.add(Calendar.HOUR, 1);<a name="line.1670"></a>
-<FONT color="green">1671</FONT>            } else if (minutes &gt; 30) {<a name="line.1671"></a>
-<FONT color="green">1672</FONT>                cal.set(Calendar.MINUTE, 45);<a name="line.1672"></a>
-<FONT color="green">1673</FONT>            } else if (minutes &gt; 15){<a name="line.1673"></a>
-<FONT color="green">1674</FONT>                cal.set(Calendar.MINUTE, 30);<a name="line.1674"></a>
-<FONT color="green">1675</FONT>            } else if (minutes &gt; 0) {<a name="line.1675"></a>
-<FONT color="green">1676</FONT>                cal.set(Calendar.MINUTE, 15);<a name="line.1676"></a>
-<FONT color="green">1677</FONT>            } else {<a name="line.1677"></a>
-<FONT color="green">1678</FONT>                cal.set(Calendar.MINUTE, 0);<a name="line.1678"></a>
-<FONT color="green">1679</FONT>            }<a name="line.1679"></a>
-<FONT color="green">1680</FONT>    <a name="line.1680"></a>
-<FONT color="green">1681</FONT>            cal.set(Calendar.SECOND, 0);<a name="line.1681"></a>
-<FONT color="green">1682</FONT>            cal.set(Calendar.MILLISECOND, 0);<a name="line.1682"></a>
-<FONT color="green">1683</FONT>    <a name="line.1683"></a>
-<FONT color="green">1684</FONT>            return cal;<a name="line.1684"></a>
-<FONT color="green">1685</FONT>        }<a name="line.1685"></a>
-<FONT color="green">1686</FONT>    <a name="line.1686"></a>
-<FONT color="green">1687</FONT>        public static Calendar yesterday() {<a name="line.1687"></a>
-<FONT color="green">1688</FONT>            Calendar rtn = new GregorianCalendar();<a name="line.1688"></a>
-<FONT color="green">1689</FONT>            rtn.add(Calendar.DATE, -1);<a name="line.1689"></a>
-<FONT color="green">1690</FONT>            return rtn;<a name="line.1690"></a>
-<FONT color="green">1691</FONT>        }<a name="line.1691"></a>
-<FONT color="green">1692</FONT>    <a name="line.1692"></a>
-<FONT color="green">1693</FONT>        public static Calendar getStartOfDayRelative(int daysFromToday) {<a name="line.1693"></a>
-<FONT color="green">1694</FONT>            Calendar rtn = getBeginningOfDay();<a name="line.1694"></a>
-<FONT color="green">1695</FONT>            rtn.add(Calendar.DATE, daysFromToday);<a name="line.1695"></a>
-<FONT color="green">1696</FONT>            return rtn;<a name="line.1696"></a>
-<FONT color="green">1697</FONT>        }<a name="line.1697"></a>
-<FONT color="green">1698</FONT>    <a name="line.1698"></a>
-<FONT color="green">1699</FONT>        public static Iterable&lt;Calendar&gt; calendarIterator(final int iterateType, final Calendar startCal, final Calendar endCal) {<a name="line.1699"></a>
-<FONT color="green">1700</FONT>            return new Iterable&lt;Calendar&gt;() {<a name="line.1700"></a>
-<FONT color="green">1701</FONT>                final Calendar workCal = (Calendar) startCal.clone();<a name="line.1701"></a>
-<FONT color="green">1702</FONT>                public Iterator&lt;Calendar&gt; iterator() {<a name="line.1702"></a>
-<FONT color="green">1703</FONT>                    return new Iterator&lt;Calendar&gt;() {<a name="line.1703"></a>
-<FONT color="green">1704</FONT>                        public boolean hasNext() {<a name="line.1704"></a>
-<FONT color="green">1705</FONT>                            return !workCal.after(endCal);<a name="line.1705"></a>
-<FONT color="green">1706</FONT>                        }<a name="line.1706"></a>
-<FONT color="green">1707</FONT>    <a name="line.1707"></a>
-<FONT color="green">1708</FONT>                        public Calendar next() {<a name="line.1708"></a>
-<FONT color="green">1709</FONT>                            workCal.add(iterateType, 1);<a name="line.1709"></a>
-<FONT color="green">1710</FONT>                            return (Calendar) workCal.clone();<a name="line.1710"></a>
-<FONT color="green">1711</FONT>                        }<a name="line.1711"></a>
-<FONT color="green">1712</FONT>    <a name="line.1712"></a>
-<FONT color="green">1713</FONT>                        public void remove() {<a name="line.1713"></a>
+<FONT color="green">1656</FONT>            today.set(Calendar.MILLISECOND, 0);<a name="line.1656"></a>
+<FONT color="green">1657</FONT>    <a name="line.1657"></a>
+<FONT color="green">1658</FONT>            return today;<a name="line.1658"></a>
+<FONT color="green">1659</FONT>        }<a name="line.1659"></a>
+<FONT color="green">1660</FONT>    <a name="line.1660"></a>
+<FONT color="green">1661</FONT>        /**<a name="line.1661"></a>
+<FONT color="green">1662</FONT>         * Returns a calendar that has been rounded to the next quarter hour and zeros out the seconds and milliseconds.<a name="line.1662"></a>
+<FONT color="green">1663</FONT>         *<a name="line.1663"></a>
+<FONT color="green">1664</FONT>         * @param cal calendar to preform calculations on<a name="line.1664"></a>
+<FONT color="green">1665</FONT>         * @return cal calendar to return<a name="line.1665"></a>
+<FONT color="green">1666</FONT>         */<a name="line.1666"></a>
+<FONT color="green">1667</FONT>        public static GregorianCalendar roundCalToNextQuarterHour(GregorianCalendar cal) {<a name="line.1667"></a>
+<FONT color="green">1668</FONT>            int minutes = cal.get(Calendar.MINUTE);<a name="line.1668"></a>
+<FONT color="green">1669</FONT>    <a name="line.1669"></a>
+<FONT color="green">1670</FONT>            if (minutes &gt; 45) {<a name="line.1670"></a>
+<FONT color="green">1671</FONT>                cal.set(Calendar.MINUTE, 0);<a name="line.1671"></a>
+<FONT color="green">1672</FONT>                cal.add(Calendar.HOUR, 1);<a name="line.1672"></a>
+<FONT color="green">1673</FONT>            } else if (minutes &gt; 30) {<a name="line.1673"></a>
+<FONT color="green">1674</FONT>                cal.set(Calendar.MINUTE, 45);<a name="line.1674"></a>
+<FONT color="green">1675</FONT>            } else if (minutes &gt; 15){<a name="line.1675"></a>
+<FONT color="green">1676</FONT>                cal.set(Calendar.MINUTE, 30);<a name="line.1676"></a>
+<FONT color="green">1677</FONT>            } else if (minutes &gt; 0) {<a name="line.1677"></a>
+<FONT color="green">1678</FONT>                cal.set(Calendar.MINUTE, 15);<a name="line.1678"></a>
+<FONT color="green">1679</FONT>            } else {<a name="line.1679"></a>
+<FONT color="green">1680</FONT>                cal.set(Calendar.MINUTE, 0);<a name="line.1680"></a>
+<FONT color="green">1681</FONT>            }<a name="line.1681"></a>
+<FONT color="green">1682</FONT>    <a name="line.1682"></a>
+<FONT color="green">1683</FONT>            cal.set(Calendar.SECOND, 0);<a name="line.1683"></a>
+<FONT color="green">1684</FONT>            cal.set(Calendar.MILLISECOND, 0);<a name="line.1684"></a>
+<FONT color="green">1685</FONT>    <a name="line.1685"></a>
+<FONT color="green">1686</FONT>            return cal;<a name="line.1686"></a>
+<FONT color="green">1687</FONT>        }<a name="line.1687"></a>
+<FONT color="green">1688</FONT>    <a name="line.1688"></a>
+<FONT color="green">1689</FONT>        public static Calendar yesterday() {<a name="line.1689"></a>
+<FONT color="green">1690</FONT>            Calendar rtn = new GregorianCalendar();<a name="line.1690"></a>
+<FONT color="green">1691</FONT>            rtn.add(Calendar.DATE, -1);<a name="line.1691"></a>
+<FONT color="green">1692</FONT>            return rtn;<a name="line.1692"></a>
+<FONT color="green">1693</FONT>        }<a name="line.1693"></a>
+<FONT color="green">1694</FONT>    <a name="line.1694"></a>
+<FONT color="green">1695</FONT>        public static Calendar getStartOfDayRelative(int daysFromToday) {<a name="line.1695"></a>
+<FONT color="green">1696</FONT>            Calendar rtn = getBeginningOfDay();<a name="line.1696"></a>
+<FONT color="green">1697</FONT>            rtn.add(Calendar.DATE, daysFromToday);<a name="line.1697"></a>
+<FONT color="green">1698</FONT>            return rtn;<a name="line.1698"></a>
+<FONT color="green">1699</FONT>        }<a name="line.1699"></a>
+<FONT color="green">1700</FONT>    <a name="line.1700"></a>
+<FONT color="green">1701</FONT>        public static Iterable&lt;Calendar&gt; calendarIterator(final int iterateType, final Calendar startCal, final Calendar endCal) {<a name="line.1701"></a>
+<FONT color="green">1702</FONT>            return new Iterable&lt;Calendar&gt;() {<a name="line.1702"></a>
+<FONT color="green">1703</FONT>                final Calendar workCal = (Calendar) startCal.clone();<a name="line.1703"></a>
+<FONT color="green">1704</FONT>                public Iterator&lt;Calendar&gt; iterator() {<a name="line.1704"></a>
+<FONT color="green">1705</FONT>                    return new Iterator&lt;Calendar&gt;() {<a name="line.1705"></a>
+<FONT color="green">1706</FONT>                        public boolean hasNext() {<a name="line.1706"></a>
+<FONT color="green">1707</FONT>                            return !workCal.after(endCal);<a name="line.1707"></a>
+<FONT color="green">1708</FONT>                        }<a name="line.1708"></a>
+<FONT color="green">1709</FONT>    <a name="line.1709"></a>
+<FONT color="green">1710</FONT>                        public Calendar next() {<a name="line.1710"></a>
+<FONT color="green">1711</FONT>                            workCal.add(iterateType, 1);<a name="line.1711"></a>
+<FONT color="green">1712</FONT>                            return (Calendar) workCal.clone();<a name="line.1712"></a>
+<FONT color="green">1713</FONT>                        }<a name="line.1713"></a>
 <FONT color="green">1714</FONT>    <a name="line.1714"></a>
-<FONT color="green">1715</FONT>                        }<a name="line.1715"></a>
-<FONT color="green">1716</FONT>                    };<a name="line.1716"></a>
-<FONT color="green">1717</FONT>                }<a name="line.1717"></a>
-<FONT color="green">1718</FONT>            };<a name="line.1718"></a>
-<FONT color="green">1719</FONT>        }<a name="line.1719"></a>
-<FONT color="green">1720</FONT>    }<a name="line.1720"></a>
+<FONT color="green">1715</FONT>                        public void remove() {<a name="line.1715"></a>
+<FONT color="green">1716</FONT>    <a name="line.1716"></a>
+<FONT color="green">1717</FONT>                        }<a name="line.1717"></a>
+<FONT color="green">1718</FONT>                    };<a name="line.1718"></a>
+<FONT color="green">1719</FONT>                }<a name="line.1719"></a>
+<FONT color="green">1720</FONT>            };<a name="line.1720"></a>
+<FONT color="green">1721</FONT>        }<a name="line.1721"></a>
+<FONT color="green">1722</FONT>    }<a name="line.1722"></a>
 
 
 

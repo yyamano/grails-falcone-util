@@ -1653,6 +1653,8 @@ public class DateUtils {
         today.set(Calendar.HOUR, 0);
         today.set(Calendar.MINUTE, 0);
         today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+
         return today;
     }
 
