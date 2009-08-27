@@ -50,7 +50,9 @@ public class InterceptableSession implements EventSource, Session {
         this.session = session;
         this.sessionImplementor = (SessionImplementor) session;
         this.eventSource = (EventSource) session;
-        EventBrokerHolder.getEventBroker().publish("hibernate.sessionCreated", this);
+        if(EventBrokerHolder.getEventBroker() != null) {
+            EventBrokerHolder.getEventBroker().publish("hibernate.sessionCreated", this);
+        }
     }
 
 // ========================================================================================================================

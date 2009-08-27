@@ -1,4 +1,4 @@
-<plugin name='falcone-util' version='0.7' grailsVersion='1.1 &gt; *'>
+<plugin name='falcone-util' version='0.8' grailsVersion='1.1 &gt; *'>
   <author>Eric Martineau</author>
   <authorEmail>ericm@infusionsoft.com</authorEmail>
   <title>Falcone Util Project</title>
