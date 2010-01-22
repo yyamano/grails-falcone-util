@@ -1,0 +1,59 @@
+I have no idea how to fix the following problem.
+
+% jave -version
+java version "1.6.0_15"
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03-226)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02-92, mixed mode)
+% uname -a
+Darwin amp.local 9.8.0 Darwin Kernel Version 9.8.0: Wed Jul 15 16:55:01 PDT 2009; root:xnu-1228.15.4~1/RELEASE_I386 i386
+% grails test-app
+Welcome to Grails 1.2.0 - http://grails.org/
+Licensed under Apache Standard License 2.0
+Grails home is set to: /Users/yyamano/work/grails/grails-1.2.0
+
+Base Directory: /Users/yyamano/work/grails/github/grails-falcone-util
+Resolving dependencies...
+Dependencies resolved in 4754ms.
+Running script /Users/yyamano/work/grails/grails-1.2.0/scripts/TestApp.groovy
+Environment set to test
+    [mkdir] Created dir: /Users/yyamano/work/grails/github/grails-falcone-util/target/test-reports/html
+    [mkdir] Created dir: /Users/yyamano/work/grails/github/grails-falcone-util/target/test-reports/plain
+
+Starting unit test phase ...
+
+Starting integration test phase ...
+[junitreport] Processing /Users/yyamano/work/grails/github/grails-falcone-util/target/test-reports/TESTS-TestSuites.xml to /var/folders/St/StYJMWjXHmije3UB6gjLFU+++TI/-Tmp-/null753597352
+[junitreport] Loading stylesheet jar:file:/Users/yyamano/.ivy2/cache/org.apache.ant/ant-junit/jars/ant-junit-1.7.1.jar!/org/apache/tools/ant/taskdefs/optional/junit/xsl/junit-frames.xsl
+[junitreport] Transform time: 934ms
+[junitreport] Deleting: /var/folders/St/StYJMWjXHmije3UB6gjLFU+++TI/-Tmp-/null753597352
+
+Tests PASSED - view reports in /Users/yyamano/work/grails/github/grails-falcone-util/target/test-reports
+Error executing script TestApp: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'sessionFactory' is defined
+gant.TargetExecutionException: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'sessionFactory' is defined
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:331)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'sessionFactory' is defined
+	at com.infusion.util.event.spring.InterceptableSessionFactoryPostProcessor.postProcessBeanFactory(InterceptableSessionFactoryPostProcessor.java:22)
+	at _GrailsBootstrap_groovy$_run_closure2_closure12.doCall(_GrailsBootstrap_groovy:89)
+	at _GrailsBootstrap_groovy$_run_closure2_closure12.doCall(_GrailsBootstrap_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:287)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsBootstrap_groovy$_run_closure2.doCall(_GrailsBootstrap_groovy:79)
+	at _GrailsBootstrap_groovy$_run_closure7.doCall(_GrailsBootstrap_groovy:145)
+	at _GrailsTest_groovy$_run_closure9.doCall(_GrailsTest_groovy:301)
+	at _GrailsTest_groovy$_run_closure9.doCall(_GrailsTest_groovy)
+	at _GrailsTest_groovy$_run_closure1_closure21.doCall(_GrailsTest_groovy:178)
+	at _GrailsTest_groovy$_run_closure1.doCall(_GrailsTest_groovy:168)
+	at TestApp$_run_closure1.doCall(TestApp.groovy:102)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	... 10 more
+Error executing script TestApp: org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'sessionFactory' is defined
