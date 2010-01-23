@@ -1,3 +1,11 @@
+KNOWN ISSUES
+
+* No license information
+
+Added LICENCE.txt, but empty.
+
+* test-app failed
+
 I have no idea how to fix the following problem.
 
 % jave -version
