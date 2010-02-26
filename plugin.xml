@@ -1,4 +1,4 @@
-<plugin name='falcone-util' version='0.9' grailsVersion='1.2.0 &gt; *'>
+<plugin name='falcone-util' version='0.9' grailsVersion='1.2.1 &gt; *'>
   <author>Eric Martineau</author>
   <authorEmail>ericm@infusionsoft.com</authorEmail>
   <title>Falcone Util Project</title>
@@ -8,8 +8,8 @@ The base classes used to support multi-tenancy and the falcone framework
   <documentation>http://grails.org/FalconeUtil+Plugin</documentation>
   <resources />
   <dependencies>
-    <plugin name='hibernate' version='1.2 &gt; *' />
-    <plugin name='webflow' version='1.2 &gt; *' />
+    <plugin name='hibernate' version='1.2.1 &gt; *' />
+    <plugin name='webflow' version='1.2.1 &gt; *' />
     <resolvers>
       <resolver type='grailsPlugins' name='grailsPlugins' />
     </resolvers>

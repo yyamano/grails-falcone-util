@@ -28,7 +28,7 @@ import com.infusion.util.event.EventBrokerHolder
 
 class FalconeUtilGrailsPlugin {
   def version = 0.9
-  def dependsOn = [hibernate: "1.2 > *" , webflow: "1.2 > *"]
+  def dependsOn = [hibernate: "1.2.1 > *" , webflow: "1.2.1 > *"]
   def author = "Eric Martineau"
   def authorEmail = "ericm@infusionsoft.com"
   def title = "Falcone Util Project"
